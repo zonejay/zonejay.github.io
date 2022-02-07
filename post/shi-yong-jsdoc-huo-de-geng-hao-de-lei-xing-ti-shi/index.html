@@ -1,0 +1,279 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>使用 JSDoc 获得更好的类型提示 | Gridea</title>
+<link rel="shortcut icon" href="https://zonejay.github.io/favicon.ico?v=1644214226689">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://zonejay.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="使用 JSDoc 获得更好的类型提示 | Gridea - Atom Feed" href="https://zonejay.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="JSDoc 是适用于 JavaScript 的 API 文档生成工具,可以识别特定的标记语法编写的注释来生成可读性较好的文档
+
+VS Code 对 JSDoc 的支持
+VS Code 能够理解大部分的 JSDoc 注释并且能够根据这些注释提..." />
+    <meta name="keywords" content="JavaScript,VSCode" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://zonejay.github.io">
+  <img class="avatar" src="https://zonejay.github.io/images/avatar.png?v=1644214226689" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              使用 JSDoc 获得更好的类型提示
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-07-06
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+                <a href="https://zonejay.github.io/tag/Rri4a1Waf/" class="post-tag">
+                  # JavaScript
+                </a>
+              
+                <a href="https://zonejay.github.io/tag/HawtX7E0n/" class="post-tag">
+                  # VSCode
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>JSDoc 是适用于 JavaScript 的 API 文档生成工具,可以识别特定的标记语法编写的注释来生成可读性较好的文档</p>
+<figure data-type="image" tabindex="1"><img src="https://zonejay.github.io/post-images/1644201796767.png" alt="" loading="lazy"></figure>
+<h2 id="vs-code-对-jsdoc-的支持">VS Code 对 JSDoc 的支持</h2>
+<p>VS Code 能够理解大部分的 JSDoc 注释并且能够根据这些注释提供智能补全的功能。你甚至可以利用 JSDoc 提供的类型信息对你的 JS 进行类型检查<br>
+<img src="https://zonejay.github.io/post-images/1644201816782.png" alt="" loading="lazy"></p>
+<h2 id="jsdoc-使用">JSDoc 使用</h2>
+<ol>
+<li>
+<p>@type<br>
+使用@type 标签来引用一个类型名(原始类型/TypeScript 中定义的类型/或者&quot;@typedef&quot;标签)</p>
+<pre><code class="language-js">/**
+ * @type {string | number} 联合类型
+ */
+var s;
+
+/** @type {Window} dom提供的类型 */
+var win;
+
+/** @type {Array&lt;number&gt;} 数组*/
+var nums;
+
+/** @type {{ a: string, b: number }} 复杂类型 */
+var var9;
+</code></pre>
+</li>
+<li>
+<p>@param @returns</p>
+<p>@param 使用和@type 相同的语法,但是需要添加参数名。将参数声明在中括号中可以使参数作为可选参数。使用@returns 来声明函数返回的类型</p>
+<pre><code class="language-js">// 参数可以用多种语法来声明
+/**
+ * @param {string}  p1 - 字符串参数
+ * @param {string=} p2 - 可选参数(Closure syntax)
+ * @param {string} [p3] - 另一个可选参数 (JSDoc syntax).
+ * @param {string} [p4=&quot;test&quot;] - 有默认值的可选参数
+ * @return {string} 返回值
+ */
+function stringsStringStrings(p1, p2, p3, p4) {
+    return 'string';
+}
+</code></pre>
+</li>
+<li>
+<p>@typedef @callback @param<br>
+@typedef 可以用来定义更复杂的类型。语法和@param 类似</p>
+<pre><code class="language-js">/**
+ * @typedef {object} SpecialType1 - 创建新的类型并命名为 'SpecialType'
+ * @property {string} prop1 - SpecialType的字符串属性
+ * @property {number} prop2 - SpecialType的数字属性
+ * @property {number=} prop3 - SpecialType的可选数字属性
+ */
+
+/** @type {SpecialType1} */
+var specialTypeObject1;
+</code></pre>
+<p>@param 可以使用类似的语法来定义一次性使用的类型。与@typedef 不同的是嵌套属性名必须以参数名作为前缀</p>
+<pre><code class="language-js">/**
+ * @param {Object} options - The shape is the same as SpecialType above
+ * @param {string} options.prop1
+ * @param {number} options.prop2
+ * @param {number=} options.prop3
+ * @param {number} [options.prop4]
+ * @param {number} [options.prop5=42]
+ */
+function special(options) {
+    return (options.prop4 || 1001) + options.prop5;
+}
+</code></pre>
+<p>@callback 和@typedef 类似,但是它是定义函数类型而不是对象类型</p>
+<pre><code class="language-js">/**
+ * @callback Predicate
+ * @param {string} data
+ * @param {number} [index]
+ * @returns {boolean}
+ */
+
+/** @type {Predicate} */
+const ok = (s) =&gt; !(s.length % 2);
+</code></pre>
+<p>当然,这些类型都可以在单行@typedef 中使用 TypeScript 语法来声明</p>
+<pre><code class="language-js">/** @typedef {{ prop1: string, prop2: string, prop3?: number }} SpecialType */
+/** @typedef {(data: string, index?: number) =&gt; boolean} Predicate */
+</code></pre>
+</li>
+<li>
+<p>@ts-check</p>
+<p>说到底,JSDoc 只是更友好的类型提示工具，并不会对类型进行检查。VS Code 针对 TS 有类型检查,但是这对 JS 文件默认是不启用的。可以在 JS 文件第一行添加//@ts-check 开启类型错误提示<br>
+<img src="https://zonejay.github.io/post-images/1644201840858.png" alt="" loading="lazy"></p>
+</li>
+</ol>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://jsdoc.app/">JSDoc 官网</a></li>
+<li><a href="https://code.visualstudio.com/docs/languages/javascript#_jsdoc-support">VS Code 对 JSDoc 的支持</a></li>
+<li><a href="https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html">TypeScript 官网的 JSDoc 支持文档</a></li>
+</ul>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#vs-code-%E5%AF%B9-jsdoc-%E7%9A%84%E6%94%AF%E6%8C%81">VS Code 对 JSDoc 的支持</a></li>
+<li><a href="#jsdoc-%E4%BD%BF%E7%94%A8">JSDoc 使用</a></li>
+<li><a href="#%E5%8F%82%E8%80%83">参考</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://zonejay.github.io/post/ji-yu-vue3elementui-de-zhong-hou-tai-crud-zu-jian/">
+              <h3 class="post-title">
+                基于Vue3+elementUI的中后台CRUD组件
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://zonejay.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
