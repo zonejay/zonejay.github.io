@@ -1,15 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zonejay.github.io</id>
-    <title>Gridea</title>
-    <updated>2022-02-07T06:11:16.652Z</updated>
+    <title>zonejay&apos;s blog</title>
+    <updated>2022-02-08T07:03:09.741Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zonejay.github.io"/>
     <link rel="self" href="https://zonejay.github.io/atom.xml"/>
     <subtitle>温故而知新</subtitle>
     <logo>https://zonejay.github.io/images/avatar.png</logo>
     <icon>https://zonejay.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2022, Gridea</rights>
+    <rights>All rights reserved 2022, zonejay&apos;s blog</rights>
+    <entry>
+        <title type="html"><![CDATA[Vue 3 + Vite + Testing Library]]></title>
+        <id>https://zonejay.github.io/post/vue-3-vite-testing-library/</id>
+        <link href="https://zonejay.github.io/post/vue-3-vite-testing-library/">
+        </link>
+        <updated>2021-11-25T03:35:41.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="关于组件测试">关于组件测试</h2>
+<p>Vue 有官方的组件测试库<a href="https://vue-test-utils.vuejs.org/">Vue Test Utils</a>,这是一个比较偏底层的组件测试库,<br>
+如果对其不熟悉的话,官方建议是使用<a href="https://testing-library.com/docs/vue-testing-library/intro">Vue Testing Library</a>,<br>
+它是对 Vue Test Utils 的抽象</p>
+<h2 id="项目添加组件测试">项目添加组件测试</h2>
+<ol>
+<li>使用 vite 创建 Vue 应用</li>
+</ol>
+<pre><code class="language-sh">yarn create vite &lt;project_name&gt; --template vue
+</code></pre>
+<ol start="2">
+<li>安装依赖</li>
+</ol>
+<p>testing library 目前只针对 Vue2 进行了适配,如果需要在 Vue3 中使用,需要安装 6.x.x 版本</p>
+<p>在使用 testing library 处理组件,它会返回一些选择器,让你根据不同的方式获取组件中的 DOM 元素,<br>
+所以在用 testing library 测试的时候,可能会需要确认某个 DOM 是否被正确的渲染出来,但 jest 本身<br>
+并没有提供这些断言的方法,所以才需要<a href="https://github.com/testing-library/jest-dom#readme">jest-dom</a>来扩充对 DOM 的断言方式</p>
+<pre><code class="language-sh">yarn add jest @testing-library/vue@next babel-jest @babel/core @babel/preset-env -D
+</code></pre>
+<ol start="3">
+<li>babel 配置</li>
+</ol>
+<pre><code class="language-js">module.exports = {
+    presets: [
+        [
+            '@babel/preset-env',
+            {
+                targets: {
+                    node: 'current'
+                }
+            }
+        ]
+    ]
+};
+</code></pre>
+<ol start="4">
+<li>jest 配置</li>
+</ol>
+<p>transform 配置中添加了针对不同文件的转换规则,如果需要测试的文件<br>
+不是 Vue3 和 js 则需要安装对应的插件并修改 transform 配置,例如如果使用<br>
+Vue2 的话可以安装@vue/vue2-jest,使用 ts 话则可以安装 ts-jest</p>
+<pre><code class="language-js">module.exports = {
+    testEnvironment: 'jsdom',
+    transform: {
+        '^.+\\.vue$': '@vue/vue3-jest',
+        '^.+\\js$': 'babel-jest'
+    },
+    testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.js$',
+    moduleFileExtensions: ['vue', 'js'],
+    transformIgnorePatterns: ['/node_modules/(?!testing-library)']
+};
+</code></pre>
+<ol start="5">
+<li>修改 package.json,添加测试命令</li>
+</ol>
+<pre><code class="language-json">  &quot;scripts&quot;: {
+    &quot;test&quot;: &quot;jest&quot;
+  },
+</code></pre>
+<h2 id="简单的测试">简单的测试</h2>
+<pre><code class="language-js">import '@testing-library/jest-dom';
+import { render } from '@testing-library/vue';
+import HelloWorld from './HelloWorld.vue';
+
+describe('HelloWorld.vue', () =&gt; {
+    it('renders props.msg when passed', () =&gt; {
+        const msg = 'new message';
+        const { getByText } = render(HelloWorld, {
+            props: { msg }
+        });
+        expect(getByText(msg)).toBeInTheDocument();
+    });
+});
+</code></pre>
+<ol>
+<li>在需要测试的组件的同级目录下创建同名测试文件,例如上述针对 HelloWorld 的组件需要创建 HelloWorld.spec.js 文件</li>
+<li>在测试文件中引入 jest-dom 来扩充 jest 的断言方法</li>
+<li>上面的测试用例是用来测试组件是否正确地渲染,所以需要从 DOM 中获取渲染的内容,render 方法用来渲染组件,而 getByText<br>
+会试着去获取内容为 msg 的 DOM,并交给 jest 的 expect 方式,最后用 jest-dom 扩充的 toBeInTheDocument 去验证,看 getByText 有没有<br>
+找到 DOM,如果有的话就代表 HelloWorld 通过了测试</li>
+</ol>
+<pre><code class="language-js">import '@testing-library/jest-dom';
+import { render, fireEvent } from '@testing-library/vue';
+import Counter from './Counter.vue';
+
+describe('increments value on click', () =&gt; {
+    it('click twice', async () =&gt; {
+        const { getByText } = render(Counter);
+
+        getByText('Times clicked: 0');
+
+        const button = getByText('increment');
+
+        await fireEvent.click(button);
+        await fireEvent.click(button);
+
+        expect(getByText('Times clicked: 2')).toBeInTheDocument();
+    });
+});
+</code></pre>
+<p>有时,我们也想看一下带有交互事件的组件是否能正常工作,这个时候就需要用到 fireEvent 函数了.<br>
+fireEvent 用来模拟用户交互行为.在上面 Counter 测试中,用户点击两次后查看 DOM 中是否有含有<br>
+特定字符串的节点.</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[winget 使用]]></title>
         <id>https://zonejay.github.io/post/winget-shi-yong/</id>
@@ -526,43 +637,6 @@ Shift+Alt+left/right
 <li>了解一些利用js控制视频控件的一些方法</li>
 </ul>
 <figure data-type="image" tabindex="1"><img src="https://i.loli.net/2019/08/25/krtm6NxUKIVhpuF.jpg" alt="video_player" loading="lazy"></figure>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[豆瓣科幻电影分析]]></title>
-        <id>https://zonejay.github.io/post/dou-ban-ke-huan-dian-ying-fen-xi/</id>
-        <link href="https://zonejay.github.io/post/dou-ban-ke-huan-dian-ying-fen-xi/">
-        </link>
-        <updated>2019-08-29T04:00:15.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="简介">简介</h2>
-<blockquote>
-<p>因为对科幻电影感兴趣，所以就利用node.js爬取了<br>
-豆瓣所有高于6分的科幻电影，一共859部电影，并作<br>
-了简易的分析，包括年份分布，分数分布以及均分。虽然<br>
-爬取的都是均分高于6的电影，均分不一定很具有代表性，<br>
-但也能在一定程度上反应最近几年电影的走势</p>
-</blockquote>
-<h2 id="评分分布">评分分布</h2>
-<blockquote>
-<p>评分可以反映出大众对一部电影的整体印象，可以更直观<br>
-的反映出普通观众对于一部电影的态度，也是我们选择电<br>
-影的一种依赖标准。虽然只是对6.0分以上的电影做了统<br>
-计，但是6.0分应该是能驱使大众去电影院观看的最低标<br>
-准了。评分分布整体满足正态分布，说明极其优秀的电影<br>
-永远是少数。</p>
-</blockquote>
-<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2019/10/08/nYgUSDVaxHBuqJt.jpg" alt="rate_dis.jpg" loading="lazy"></figure>
-<h2 id="按年分布">按年分布</h2>
-<blockquote>
-<p>每一年的电影数量也是一个比较好的反映电影市场的数据，<br>
-一般来说当年的电影数量越多，就越能证明电影市场的活跃<br>
-和观众对于电影的喜爱</p>
-</blockquote>
-<figure data-type="image" tabindex="2"><img src="https://i.loli.net/2019/10/08/yI6XAi5rTbUwW7h.jpg" alt="years_dis.jpg" loading="lazy"></figure>
-<h2 id="其他">其他</h2>
-<blockquote>
-<p>还有一些其他的数据比如各国科幻电影统计以及年平均分分布，可以在<a href="https://cangzhijie356.tk/src/douban/index.html">这里</a>看到</p>
-</blockquote>
 ]]></content>
     </entry>
 </feed>
