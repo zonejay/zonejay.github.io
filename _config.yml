@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ''
-description: ''
-keywords: 'hexo,zonejay的博客,前端开发,Aircloud'
-author: Zone Jay
+title: ZoneJay的博客
+subtitle: 'Coding, gaming and Writing'
+description: 'ZoneJay的博客'
+keywords: 'hexo,ZoneJay,ZoneJay的博客,前端开发,Aircloud'
+author: ZoneJay
 language: zh
 timezone: ''
 
