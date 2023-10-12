@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang=zh-CN>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:description" content="ZoneJay的博客">
+    <meta property="og:type" content="website">
+    <meta name="description" content="ZoneJay的博客">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        页面加载优化 - ZoneJay的博客
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_28hi1hpxx24.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+    
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Coding, gaming and Writing </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.png" />
+        </div>
+        <div class="name">
+            <i>ZoneJay</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/collect/">
+                    <i class="iconfont icon-shoucang1"></i>
+                    <span>收藏</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E5%8A%A0%E8%BD%BD"><span class="toc-text">组件加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E8%AF%B7%E6%B1%82"><span class="toc-text">接口请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E4%BD%93%E9%AA%8C%E4%BC%98%E5%8C%96"><span class="toc-text">页面体验优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E5%8A%A0%E8%BD%BD%E9%A1%BA%E5%BA%8F"><span class="toc-text">组件加载顺序</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-bg" id="search-bg"></div>
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> Coding, gaming and Writing </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        页面加载优化
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2022-09-01 00:00:00</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#Vue.js" title="Vue.js">Vue.js</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <p>不同的 tab 页使用的还是同一个组件，但是在 tab 点击到列表完全展示，差不多有 1s~2s 等待时间。原因可能是组件加载缓慢或者网络请求慢</p>
+<h3 id="组件加载"><a href="#组件加载" class="headerlink" title="组件加载"></a>组件加载</h3><p>使用 Vue devtool 可以检查组件的加载时间</p>
+<p><img src="/img/20220901101039.png"></p>
+<p>logContent 是列表组件容器，卡顿的表现也主要是由于该组件中的列表上时间没有渲染到页面，从而造成了视觉上的卡顿。从上图可以看出这个组件并没有耗费太长的时间。</p>
+<h3 id="接口请求"><a href="#接口请求" class="headerlink" title="接口请求"></a>接口请求</h3><p>因为页面上有许多组件都可以和列表有交互,所以将数据的请求放在 Vuex 的 actions 中，可以更方便的在不同的组件中共享状态和操作。<br>整个列表加载是由三个接口构成</p>
+<p>以下接口均为最近 5 分钟的查询结果 从上到下依次是三个接口的加载时间<br>切换第一个 tab 时</p>
+<p><img src="/img/20220901111414.png"></p>
+<p><img src="/img/20220901111509.png"></p>
+<p><img src="/img/20220901111613.png"></p>
+<p>三次接口查询分别耗时 613ms 607ms 39ms<br>切换第二个 tab 时</p>
+<p><img src="/img/20220901111430.png"></p>
+<p><img src="/img/20220901111547.png"></p>
+<p><img src="/img/20220901111630.png"></p>
+<p>三个接口总共耗时 802ms 831ms 790ms</p>
+<p>访问上海的数据中心时平均耗时接近 1s，接近肉眼观察的页面加载时间</p>
+<h3 id="页面体验优化"><a href="#页面体验优化" class="headerlink" title="页面体验优化"></a>页面体验优化</h3><p>加载动画在列表接口请求结束后就消失了，列表加载卡顿的原因也主要来自于 loading 动画结束之后到列表加载出来后的这一空白时间。loading 动画应该在第一个接口之前开始，在最后一个接口之后结束。<br>通过手动延长加载时间后，发现 loading 动画消失后到页面列表加载出来的这段时间，也是由 loading 组件占据了列表的位置，只是没有显示加载动画。</p>
+<p><img src="/img/20220901114922.png"></p>
+<p>loading 状态由 noData 和 isLoadding 两个变量控制，当列表请求结束后，便设置了 noData 变量，而 isLoadding 变量还是 true，从而导致了动画结束后的空白时间。<br>至此，问题也解决了，去掉组件的 show-img 属性，将 setListLoadding 提前，便可以使动画正常结束。</p>
+<h3 id="组件加载顺序"><a href="#组件加载顺序" class="headerlink" title="组件加载顺序"></a>组件加载顺序</h3><p>在调试的过程中发现，初次进入原始日志页面的时候，表头的数据加载晚于列表的数据的加载。在 Vue 中，子组件的 created 生命周期先于父组件的 created 生命周期完成。获取日志的方法在子组件 searchbox 中调用，而获取表头的接口则在父组件中调用。因此，获取表头的方法永远晚于获取日志的接口，从而导致了表头的闪烁。这个问题可以通过将列表数据的请求放在父组件中来解决</p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+        <div id="lv-container"></div>
+        <div class="giscus"></div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>  Theme <a target="_blank" rel="noopener" href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+</html>

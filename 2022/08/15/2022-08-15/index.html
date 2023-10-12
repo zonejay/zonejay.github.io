@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang=zh-CN>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:description" content="ZoneJay的博客">
+    <meta property="og:type" content="website">
+    <meta name="description" content="ZoneJay的博客">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        NAS折腾（二）内网穿透 - ZoneJay的博客
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_28hi1hpxx24.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+    
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Coding, gaming and Writing </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.png" />
+        </div>
+        <div class="name">
+            <i>ZoneJay</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/collect/">
+                    <i class="iconfont icon-shoucang1"></i>
+                    <span>收藏</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F"><span class="toc-text">内网穿透</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8A%B1%E7%94%9F%E5%A3%B3-PHTunnel"><span class="toc-text">花生壳 PHTunnel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#zerotier"><span class="toc-text">zerotier</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E5%86%85%E5%AD%98"><span class="toc-text">加内存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%90%AF-docker"><span class="toc-text">开启 docker</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%83%A8%E7%BD%B2-tts"><span class="toc-text">部署 tts</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E-inoreader-%E8%BF%81%E7%A7%BB"><span class="toc-text">从 inoreader 迁移</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%8B%E6%9C%BA%E4%BD%BF%E7%94%A8"><span class="toc-text">手机使用</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-bg" id="search-bg"></div>
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> Coding, gaming and Writing </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        NAS折腾（二）内网穿透
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2022-08-15 00:00:00</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#硬件" title="硬件">硬件</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <p>信息流之类的 app 一旦开始就很难停下来，例如 twitter、微博、bilibili。每天的<br>闲暇时间都在不同的 app 之间切换。有没有能够聚合所有信息流的方法呢？想起之前使用的<br>rss，免费的 inoreader 和 feedly 都有不同的限制，于是使用了自架 rss。</p>
+<h2 id="内网穿透"><a href="#内网穿透" class="headerlink" title="内网穿透"></a>内网穿透</h2><h3 id="花生壳-PHTunnel"><a href="#花生壳-PHTunnel" class="headerlink" title="花生壳 PHTunnel"></a>花生壳 PHTunnel</h3><p>内网穿透首先需要的便是公网 ip，家里的网络是中国移动的免费宽带，而小气的移动<br>宽带根本就没有多少公网 ip，就得想想其他方法。有没有不需要公网 ip 也可以进行内<br>网穿透的方法？在找的过程中发现花生壳 PHTunnel 就是这样的工具，而路由器自带花<br>生壳插件，具体的使用方法如下</p>
+<ol>
+<li>开启路由器自带的花生壳插件用来生成 sn 码</li>
+<li>使用生成的 sn 码登录花生壳管理平台</li>
+<li>花 6 元钱开启 HTTPS 映射服务</li>
+<li>添加内网映射</li>
+</ol>
+<h3 id="zerotier"><a href="#zerotier" class="headerlink" title="zerotier"></a>zerotier</h3><ol>
+<li>注册 zerotier 账号</li>
+<li>在 zerotier 上创建网络</li>
+<li>nas&#x2F;手机&#x2F;电脑下载客户端</li>
+<li>ssh 到 nas</li>
+<li>执行 zerotier network 命令</li>
+<li>其他客户端操作类似，加入创建的网络</li>
+</ol>
+<h2 id="加内存"><a href="#加内存" class="headerlink" title="加内存"></a>加内存</h2><p>使用 docker 至少需要 8g 内存，而自带的只有 2g，强制开启 docker 的话肯定会卡死，闲鱼<br>购买了一根 8g 的 ddr3l 的内存，这样再也不怕内存不足了</p>
+<h2 id="开启-docker"><a href="#开启-docker" class="headerlink" title="开启 docker"></a>开启 docker</h2><h2 id="部署-tts"><a href="#部署-tts" class="headerlink" title="部署 tts"></a>部署 tts</h2><p>使用 docker 部署<a target="_blank" rel="noopener" href="https://ttrss.henry.wang/zh/#%E5%85%B3%E4%BA%8E">tts</a></p>
+<h2 id="从-inoreader-迁移"><a href="#从-inoreader-迁移" class="headerlink" title="从 inoreader 迁移"></a>从 inoreader 迁移</h2><p>从 inoreader 平台导出 opml 文件</p>
+<h2 id="手机使用"><a href="#手机使用" class="headerlink" title="手机使用"></a>手机使用</h2><p>tts 提供了官方安卓客户端，使用体验良好，ios 可以使用 reeder</p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+        <div id="lv-container"></div>
+        <div class="giscus"></div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>  Theme <a target="_blank" rel="noopener" href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+</html>

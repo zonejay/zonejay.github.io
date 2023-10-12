@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang=zh-CN>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:description" content="ZoneJay的博客">
+    <meta property="og:type" content="website">
+    <meta name="description" content="ZoneJay的博客">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Vue 3 + Vite + Testing Library - ZoneJay的博客
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_28hi1hpxx24.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+    
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Coding, gaming and Writing </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.png" />
+        </div>
+        <div class="name">
+            <i>ZoneJay</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/collect/">
+                    <i class="iconfont icon-shoucang1"></i>
+                    <span>收藏</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E7%BB%84%E4%BB%B6%E6%B5%8B%E8%AF%95"><span class="toc-text">关于组件测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E6%B7%BB%E5%8A%A0%E7%BB%84%E4%BB%B6%E6%B5%8B%E8%AF%95"><span class="toc-text">项目添加组件测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84%E6%B5%8B%E8%AF%95"><span class="toc-text">简单的测试</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-bg" id="search-bg"></div>
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> Coding, gaming and Writing </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Vue 3 + Vite + Testing Library
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2021-11-25 11:35:41</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#Vue.js" title="Vue.js">Vue.js</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h2 id="关于组件测试"><a href="#关于组件测试" class="headerlink" title="关于组件测试"></a>关于组件测试</h2><p>Vue 有官方的组件测试库<a target="_blank" rel="noopener" href="https://vue-test-utils.vuejs.org/">Vue Test Utils</a>,这是一个比较偏底层的组件测试库,<br>如果对其不熟悉的话,官方建议是使用<a target="_blank" rel="noopener" href="https://testing-library.com/docs/vue-testing-library/intro">Vue Testing Library</a>,<br>它是对 Vue Test Utils 的抽象</p>
+<h2 id="项目添加组件测试"><a href="#项目添加组件测试" class="headerlink" title="项目添加组件测试"></a>项目添加组件测试</h2><ol>
+<li>使用 vite 创建 Vue 应用</li>
+</ol>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn create vite &lt;project_name&gt; --template vue</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>安装依赖</li>
+</ol>
+<p>testing library 目前只针对 Vue2 进行了适配,如果需要在 Vue3 中使用,需要安装 6.x.x 版本</p>
+<p>在使用 testing library 处理组件,它会返回一些选择器,让你根据不同的方式获取组件中的 DOM 元素,<br>所以在用 testing library 测试的时候,可能会需要确认某个 DOM 是否被正确的渲染出来,但 jest 本身<br>并没有提供这些断言的方法,所以才需要<a target="_blank" rel="noopener" href="https://github.com/testing-library/jest-dom#readme">jest-dom</a>来扩充对 DOM 的断言方式</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add jest @testing-library/vue@next babel-jest @babel/core @babel/preset-env -D</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>babel 配置</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">    <span class="attr">presets</span>: [</span><br><span class="line">        [</span><br><span class="line">            <span class="string">&#x27;@babel/preset-env&#x27;</span>,</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">targets</span>: &#123;</span><br><span class="line">                    <span class="attr">node</span>: <span class="string">&#x27;current&#x27;</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    ]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>jest 配置</li>
+</ol>
+<p>transform 配置中添加了针对不同文件的转换规则,如果需要测试的文件<br>不是 Vue3 和 js 则需要安装对应的插件并修改 transform 配置,例如如果使用<br>Vue2 的话可以安装@vue&#x2F;vue2-jest,使用 ts 话则可以安装 ts-jest</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = &#123;</span><br><span class="line">    <span class="attr">testEnvironment</span>: <span class="string">&#x27;jsdom&#x27;</span>,</span><br><span class="line">    <span class="attr">transform</span>: &#123;</span><br><span class="line">        <span class="string">&#x27;^.+\\.vue$&#x27;</span>: <span class="string">&#x27;@vue/vue3-jest&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;^.+\\js$&#x27;</span>: <span class="string">&#x27;babel-jest&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">testRegex</span>: <span class="string">&#x27;(/__tests__/.*|(\\.|/)(test|spec))\\.js$&#x27;</span>,</span><br><span class="line">    <span class="attr">moduleFileExtensions</span>: [<span class="string">&#x27;vue&#x27;</span>, <span class="string">&#x27;js&#x27;</span>],</span><br><span class="line">    <span class="attr">transformIgnorePatterns</span>: [<span class="string">&#x27;/node_modules/(?!testing-library)&#x27;</span>]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>修改 package.json,添加测试命令</li>
+</ol>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;test&quot;</span><span class="punctuation">:</span> <span class="string">&quot;jest&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="简单的测试"><a href="#简单的测试" class="headerlink" title="简单的测试"></a>简单的测试</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;@testing-library/jest-dom&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; render &#125; <span class="keyword">from</span> <span class="string">&#x27;@testing-library/vue&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">HelloWorld</span> <span class="keyword">from</span> <span class="string">&#x27;./HelloWorld.vue&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="title function_">describe</span>(<span class="string">&#x27;HelloWorld.vue&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">it</span>(<span class="string">&#x27;renders props.msg when passed&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> msg = <span class="string">&#x27;new message&#x27;</span>;</span><br><span class="line">        <span class="keyword">const</span> &#123; getByText &#125; = <span class="title function_">render</span>(<span class="title class_">HelloWorld</span>, &#123;</span><br><span class="line">            <span class="attr">props</span>: &#123; msg &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="title function_">expect</span>(<span class="title function_">getByText</span>(msg)).<span class="title function_">toBeInTheDocument</span>();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>在需要测试的组件的同级目录下创建同名测试文件,例如上述针对 HelloWorld 的组件需要创建 HelloWorld.spec.js 文件</li>
+<li>在测试文件中引入 jest-dom 来扩充 jest 的断言方法</li>
+<li>上面的测试用例是用来测试组件是否正确地渲染,所以需要从 DOM 中获取渲染的内容,render 方法用来渲染组件,而 getByText<br>会试着去获取内容为 msg 的 DOM,并交给 jest 的 expect 方式,最后用 jest-dom 扩充的 toBeInTheDocument 去验证,看 getByText 有没有<br>找到 DOM,如果有的话就代表 HelloWorld 通过了测试</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;@testing-library/jest-dom&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; render, fireEvent &#125; <span class="keyword">from</span> <span class="string">&#x27;@testing-library/vue&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Counter</span> <span class="keyword">from</span> <span class="string">&#x27;./Counter.vue&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="title function_">describe</span>(<span class="string">&#x27;increments value on click&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">it</span>(<span class="string">&#x27;click twice&#x27;</span>, <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">        <span class="keyword">const</span> &#123; getByText &#125; = <span class="title function_">render</span>(<span class="title class_">Counter</span>);</span><br><span class="line"></span><br><span class="line">        <span class="title function_">getByText</span>(<span class="string">&#x27;Times clicked: 0&#x27;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">const</span> button = <span class="title function_">getByText</span>(<span class="string">&#x27;increment&#x27;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">await</span> fireEvent.<span class="title function_">click</span>(button);</span><br><span class="line">        <span class="keyword">await</span> fireEvent.<span class="title function_">click</span>(button);</span><br><span class="line"></span><br><span class="line">        <span class="title function_">expect</span>(<span class="title function_">getByText</span>(<span class="string">&#x27;Times clicked: 2&#x27;</span>)).<span class="title function_">toBeInTheDocument</span>();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>有时,我们也想看一下带有交互事件的组件是否能正常工作,这个时候就需要用到 fireEvent 函数了.<br>fireEvent 用来模拟用户交互行为.在上面 Counter 测试中,用户点击两次后查看 DOM 中是否有含有<br>特定字符串的节点.</p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+        <div id="lv-container"></div>
+        <div class="giscus"></div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>  Theme <a target="_blank" rel="noopener" href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+</html>

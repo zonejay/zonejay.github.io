@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang=zh-CN>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:description" content="ZoneJay的博客">
+    <meta property="og:type" content="website">
+    <meta name="description" content="ZoneJay的博客">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        基于Vue3+elementUI的中后台CRUD组件 - ZoneJay的博客
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_28hi1hpxx24.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+    
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Coding, gaming and Writing </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.png" />
+        </div>
+        <div class="name">
+            <i>ZoneJay</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/collect/">
+                    <i class="iconfont icon-shoucang1"></i>
+                    <span>收藏</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Vue-restful-admin"><span class="toc-text">Vue restful admin</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B9%E6%8D%AE-restful-%E6%8E%A5%E5%8F%A3%E5%BF%AB%E9%80%9F%E5%88%9B%E5%BB%BA-CRUD-%E7%95%8C%E9%9D%A2"><span class="toc-text">根据 restful 接口快速创建 CRUD 界面</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-bg" id="search-bg"></div>
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> Coding, gaming and Writing </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        基于Vue3+elementUI的中后台CRUD组件
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2021-04-03 10:00:28</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#Vue.js" title="Vue.js">Vue.js</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#Element Plus" title="Element Plus">Element Plus</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h2 id="Vue-restful-admin"><a href="#Vue-restful-admin" class="headerlink" title="Vue restful admin"></a>Vue restful admin</h2><h3 id="根据-restful-接口快速创建-CRUD-界面"><a href="#根据-restful-接口快速创建-CRUD-界面" class="headerlink" title="根据 restful 接口快速创建 CRUD 界面"></a>根据 restful 接口快速创建 CRUD 界面</h3><blockquote>
+<p>restful 接口根据不同的请求方式可以快速完成资源的增删查改,<br>而对于前端来说意味着只需要为组件提供一个 url 属性便可以完成<br>所有的操作.</p>
+</blockquote>
+<blockquote>
+<p>在此项目中，参考了<a target="_blank" rel="noopener" href="https://github.com/marmelab/react-admin">react-admin</a>的中的 data-provider<br>的设计思路，将 restful 请求接口写成单独的函数，这样便可以定义自己的请求接口</p>
+</blockquote>
+<ol>
+<li><p>定义 dataServer</p>
+<pre><code>dataServer 中定义了五种基本操作
+</code></pre>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">dataServer</span> = (<span class="params">url</span>) =&gt; (&#123;</span><br><span class="line">  <span class="attr">getAll</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> [];</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">get</span>: <span class="function">(<span class="params">id</span>) =&gt;</span> &#123;&#125;,</span><br><span class="line">  <span class="attr">create</span>: <span class="function">(<span class="params">data</span>) =&gt;</span> &#123;&#125;,</span><br><span class="line">  <span class="attr">update</span>: <span class="function">(<span class="params">data</span>) =&gt;</span> &#123;&#125;,</span><br><span class="line">  <span class="attr">delete</span>: <span class="function">(<span class="params">id</span>) =&gt;</span> &#123;&#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过编写类似 schema 的方式来定义表格和编辑表单</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">columns</span>: [</span><br><span class="line">  &#123; <span class="attr">prop</span>: <span class="string">&quot;author&quot;</span>, <span class="attr">label</span>: <span class="string">&quot;姓名&quot;</span>, <span class="attr">type</span>: <span class="string">&quot;input&quot;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">prop</span>: <span class="string">&quot;title&quot;</span>, <span class="attr">label</span>: <span class="string">&quot;标题&quot;</span>, <span class="attr">type</span>: <span class="string">&quot;input&quot;</span> &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">prop</span>: <span class="string">&quot;create_at&quot;</span>,</span><br><span class="line">    <span class="attr">label</span>: <span class="string">&quot;创建时间&quot;</span>,</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&quot;time&quot;</span>,</span><br><span class="line">    <span class="attr">format</span>: <span class="string">&quot;YYYY-MM-DD HH:mm&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">prop</span>: <span class="string">&quot;gender&quot;</span>,</span><br><span class="line">    <span class="attr">label</span>: <span class="string">&quot;性别&quot;</span>,</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&quot;select&quot;</span>,</span><br><span class="line">    <span class="attr">options</span>: [</span><br><span class="line">      &#123; <span class="attr">label</span>: <span class="string">&quot;男&quot;</span>, <span class="attr">value</span>: <span class="number">1</span> &#125;,</span><br><span class="line">      &#123; <span class="attr">label</span>: <span class="string">&quot;女&quot;</span>, <span class="attr">value</span>: <span class="number">2</span> &#125;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>效果图</p>
+<p><img src="https://i.loli.net/2021/04/30/mVlHncrkIeWvtg6.png" alt="table.PNG"><br><img src="https://i.loli.net/2021/04/30/v68rOZbX7uF3EPH.png" alt="edit.PNG"></p>
+</li>
+</ol>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+        <div id="lv-container"></div>
+        <div class="giscus"></div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>  Theme <a target="_blank" rel="noopener" href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+</html>
