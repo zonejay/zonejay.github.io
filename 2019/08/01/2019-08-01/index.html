@@ -111,7 +111,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E5%8A%9F%E8%83%BD"><span class="toc-text">主要功能</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E5%9F%BA%E4%BA%8EElectron%E7%9A%84%E7%95%AA%E8%8C%84%E8%AE%A1%E6%97%B6%E5%99%A8"><span class="toc-text">构建基于Electron的番茄计时器</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E6%A0%88"><span class="toc-text">技术栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4"><span class="toc-text">实现步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%9D%E5%A7%8B%E5%8C%96Electron%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F"><span class="toc-text">1. 初始化Electron应用程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E8%AE%BE%E8%AE%A1%E7%95%AA%E8%8C%84%E8%AE%A1%E6%97%B6%E5%99%A8%E7%95%8C%E9%9D%A2"><span class="toc-text">2. 设计番茄计时器界面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%AE%9E%E7%8E%B0%E7%95%AA%E8%8C%84%E8%AE%A1%E6%97%B6%E5%99%A8%E9%80%BB%E8%BE%91"><span class="toc-text">3. 实现番茄计时器逻辑</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%B7%BB%E5%8A%A0%E6%8F%90%E9%86%92%E5%92%8C%E6%8F%90%E7%A4%BA%E5%8A%9F%E8%83%BD"><span class="toc-text">4. 添加提醒和提示功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%B5%8B%E8%AF%95%E5%92%8C%E4%BC%98%E5%8C%96"><span class="toc-text">5. 测试和优化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AE%BA"><span class="toc-text">结论</span></a></li></ol></li></ol>
 </div>
     
 </div>
@@ -164,15 +164,19 @@
 </span>
     </div>
     <div class="post-content ">
-        <h2 id="主要功能"><a href="#主要功能" class="headerlink" title="主要功能"></a>主要功能</h2><ol>
-<li>给任务设定时间，分为5,15,25三档</li>
-<li>自定义任务时间</li>
-<li>桌面离线运行</li>
-</ol>
-<p><img src="https://i.loli.net/2019/10/08/wVpYcqdKl4Q1EhM.jpg" alt="project_timer.jpg"></p>
-<pre><code>上图就是利用electron对项目进行打包后运行的情况。electron可以方便快速的对
-React项目进行打包。
-</code></pre>
+        <h1 id="构建基于Electron的番茄计时器"><a href="#构建基于Electron的番茄计时器" class="headerlink" title="构建基于Electron的番茄计时器"></a>构建基于Electron的番茄计时器</h1><p>在现代社会中，时间管理变得越来越重要。番茄工作法是一种广受欢迎的时间管理技术，通过将工作划分为固定时间段，以提高工作效率。本文将介绍如何使用Electron框架构建一个基于番茄工作法的计时器应用程序，帮助用户更好地管理工作时间和提高生产力。</p>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>Electron是一个流行的开源框架，用于构建跨平台的桌面应用程序。它结合了Chromium和Node.js，使开发人员能够使用Web技术（如HTML、CSS和JavaScript）构建功能强大的桌面应用程序。通过利用Electron，我们可以轻松构建功能丰富且具有跨平台能力的应用程序，比如我们的番茄计时器。</p>
+<h2 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h2><ul>
+<li>HTML&#x2F;CSS：构建应用程序界面和样式</li>
+<li>JavaScript：处理番茄计时器逻辑和交互</li>
+<li>Electron：用于构建桌面应用程序的开源框架</li>
+</ul>
+<h2 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h2><h3 id="1-初始化Electron应用程序"><a href="#1-初始化Electron应用程序" class="headerlink" title="1. 初始化Electron应用程序"></a>1. 初始化Electron应用程序</h3><p>使用Electron快速设置应用程序的基本结构，确保能够成功运行应用程序并显示基本窗口界面。</p>
+<h3 id="2-设计番茄计时器界面"><a href="#2-设计番茄计时器界面" class="headerlink" title="2. 设计番茄计时器界面"></a>2. 设计番茄计时器界面</h3><p>创建番茄计时器的用户界面，包括倒计时显示、开始&#x2F;暂停按钮、重置按钮和任务设置等功能。</p>
+<h3 id="3-实现番茄计时器逻辑"><a href="#3-实现番茄计时器逻辑" class="headerlink" title="3. 实现番茄计时器逻辑"></a>3. 实现番茄计时器逻辑</h3><p>编写JavaScript代码来处理番茄计时器的逻辑。确保计时器能够按照番茄工作法的原则正确工作，包括工作时间和休息时间的切换，以及计时器的暂停和重置功能。</p>
+<h3 id="4-添加提醒和提示功能"><a href="#4-添加提醒和提示功能" class="headerlink" title="4. 添加提醒和提示功能"></a>4. 添加提醒和提示功能</h3><p>通过Electron的API添加提醒和提示功能，以便在工作时间和休息时间结束时提醒用户。</p>
+<h3 id="5-测试和优化"><a href="#5-测试和优化" class="headerlink" title="5. 测试和优化"></a>5. 测试和优化</h3><p>进行全面的测试，确保应用程序在各种操作系统和环境下都能正常工作。根据用户反馈和测试结果对应用程序进行优化和改进。</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>通过本文的指导，我们成功地构建了一个基于Electron的番茄计时器应用程序。番茄计时器不仅可以帮助用户提高工作效率，还能够更好地管理时间和提高工作成果。希望本文能够为读者提供有用的指导，并激发对Electron框架应用开发的兴趣。</p>
 
         
         <br />
