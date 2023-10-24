@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang=zh-CN>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:description" content="ZoneJay的博客">
+    <meta property="og:type" content="website">
+    <meta name="description" content="ZoneJay的博客">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        UnoCSS（二）为什么是UnoCSS - ZoneJay的博客
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_28hi1hpxx24.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+    
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Coding, Gaming and Writing </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.png" />
+        </div>
+        <div class="name">
+            <i>ZoneJay</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/collect/">
+                    <i class="iconfont icon-shoucang1"></i>
+                    <span>收藏</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8A%A8%E6%9C%BA"><span class="toc-text">动机</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#UnoCSS%E4%B8%8EX%E4%B9%8B%E9%97%B4%E7%9A%84%E4%B8%8D%E5%90%8C"><span class="toc-text">UnoCSS与X之间的不同</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Windi-CSS"><span class="toc-text">Windi CSS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tailwind-CSS"><span class="toc-text">Tailwind CSS</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-bg" id="search-bg"></div>
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> Coding, Gaming and Writing </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        UnoCSS（二）为什么是UnoCSS
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2023-07-10 00:00:00</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#FE" title="FE">FE</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#翻译" title="翻译">翻译</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#UnoCSS" title="UnoCSS">UnoCSS</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <blockquote>
+<p>本篇博客翻译自<a target="_blank" rel="noopener" href="https://unocss.dev/why/">Why UnoCSS</a></p>
+</blockquote>
+<h1 id="动机"><a href="#动机" class="headerlink" title="动机"></a>动机</h1><p>我们建议您阅读UnoCSS的创建者<a target="_blank" rel="noopener" href="https://antfu.me/">Anthony Fu</a>撰写的博客文章<a target="_blank" rel="noopener" href="https://antfu.me/posts/reimagine-atomic-css">《重新构想原子CSS》</a>，以更好地了解UnoCSS背后的动机。</p>
+<h1 id="UnoCSS与X之间的不同"><a href="#UnoCSS与X之间的不同" class="headerlink" title="UnoCSS与X之间的不同"></a>UnoCSS与X之间的不同</h1><h2 id="Windi-CSS"><a href="#Windi-CSS" class="headerlink" title="Windi CSS"></a>Windi CSS</h2><p>UnoCSS是由Windi CSS团队的一名成员发起的，从我们在Windi CSS中的工作中获得了很多灵感。虽然Windi CSS自2023年3月起不再积极维护，但您可以将UnoCSS视为Windi CSS的“精神继承者”。</p>
+<p>UnoCSS继承了Windi CSS的按需加载、属性模式、快捷方式、变体组、编译模式等特性。此外，UnoCSS是从头开始构建的，以最大的可扩展性和性能为目标，使我们能够引入新功能，如纯CSS图标、无值属性模式、标签模式、Web字体等。</p>
+<p>最重要的是，UnoCSS被提取为一个原子CSS引擎，其中所有功能都是可选的，使您能够轻松创建自己的约定、设计系统和预设 - 并结合您想要的功能组合。</p>
+<h2 id="Tailwind-CSS"><a href="#Tailwind-CSS" class="headerlink" title="Tailwind CSS"></a>Tailwind CSS</h2><p>Both Windi CSS和UnoCSS都从Tailwind CSS中获得了很多灵感。由于UnoCSS是从头开始构建的，我们能够全面了解原子CSS是如何通过前期工作进行设计，并将其抽象为一个优雅而强大的API。由于设计目标有很大的不同，所以与Tailwind CSS进行直接的苹果对苹果比较并不太合适。但是我们将尝试列出一些区别：</p>
+<p>Tailwind CSS是一个PostCSS插件，而UnoCSS是一个具有一堆与构建工具的一流集成（包括一个PostCSS插件）的同构引擎。这意味着UnoCSS可以更加灵活地在不同的地方使用（例如在运行时生成CSS的CDN Runtime），并与构建工具深度集成，以提供更好的HMR、性能和开发者体验（例如，检查器）。</p>
+<p>除了技术上的取舍之外，UnoCSS还被设计为完全可扩展和可定制，而Tailwind CSS则更具有明确的意见。在Tailwind CSS之上构建自定义设计系统（或设计令牌）可能会很困难，并且您不能真正摆脱Tailwind CSS的约定。而使用UnoCSS，您可以完全控制地构建几乎任何您想要的东西。例如，我们在一个预设中实现了整个与Tailwind CSS兼容的实用工具集，而且还有许多令人惊叹的社区预设实现了其他有趣的哲学。</p>
+<p>由于UnoCSS提供的灵活性，我们能够在其之上尝试许多创新功能，例如：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://unocss.dev/presets/icons">纯CSS图标</a></li>
+<li><a target="_blank" rel="noopener" href="https://unocss.dev/presets/attributify">Attributify Mode</a></li>
+</ul>
+<p>为了使其更具灵活怼您可以逿将规则的第一ª参数（我们称之为匹配器）更改为正则表达式，并将其主体更改为函数来使规则变得动怌，例如：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// uno.config.ts</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">      <span class="attr">rules</span>: [</span><br><span class="line">      -    [<span class="string">&#x27;m-1&#x27;</span>, &#123; <span class="attr">margin</span>: <span class="string">&#x27;1px&#x27;</span> &#125;]</span><br><span class="line">      +    [<span class="regexp">/^m-([\.\d]+)$/</span>, <span class="function">(<span class="params">[_, num]</span>) =&gt;</span> (&#123; <span class="attr">margin</span>: <span class="string">`<span class="subst">$&#123;num&#125;</span>px`</span> &#125;)],</span><br><span class="line">        ],</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>逿这样做，现在您可以拥有任意的边距实用工具，例如m-1ã100或m-52.43　¸，UnoCSS只在您使用它们时才会生成相应的样式ã&#96;&#96;&#96;html</p>
+<div class="m-1">Hello</div>
+<div class="m-7.5">World</div>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```css</span><br></pre></td></tr></table></figure>
+- [Variant Groups](https://unocss.dev/transformers/variant-group)
+- [Shortcuts](https://unocss.dev/config/shortcuts)
+- [Tagify](https://unocss.dev/presets/tagify)
+- [Web fonts](https://unocss.dev/presets/web-fonts)
+- [CDN Runtime](https://unocss.dev/integrations/runtime)
+- [Inspector](https://unocss.dev/tools/inspector)
+  
+<p>UnoCSS确实不支持Tailwind CSS的插件系统或配置，这意味着从一个定制程度很高的Tailwind CSS项目迁移到UnoCSS可能会更加困难。这是为了使UnoCSS具有高性能和可扩展性而做出的有意决策，我们相信这种权衡是值得的。</p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+        <div id="lv-container"></div>
+        <div class="giscus"></div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>  Theme <a target="_blank" rel="noopener" href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+</html>
