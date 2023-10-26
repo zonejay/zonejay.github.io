@@ -12,7 +12,7 @@
 
     <title>
         
-        ZoneJay的博客
+        CRUD配置工具 起因 - ZoneJay的博客
         
     </title>
 
@@ -69,7 +69,7 @@
     </div>
     <div class="contents" id="nav-content">
         <ul>
-            <li  class=active >
+            <li >
                 <a href="/">
                     <i class="iconfont icon-shouye1"></i>
                     <span>主页</span>
@@ -110,6 +110,10 @@
         </ul>
     </div>
     
+        <div id="toc" class="toc-article">
+    
+</div>
+    
 </div>
 
 
@@ -135,115 +139,41 @@
     <div class="index-middle">
         <!-- Main Content -->
         
-<div class="post-preview-container" style="min-height: 720px">
-    
-    <div class="post-preview">
-        <div class="post-time">2019-09-06</div>
-        <div class="post-info">
-            <a href="https://zonejay.github.io/2019/09/06/2019-09-06/">
-                <h3>
-                    HTML5播放器
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#HTML5" title="HTML5">HTML5</a>
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#FE" title="FE">FE</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+
+<div class="post-container">
+    <div class="post-title">
+        CRUD配置工具 起因
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-08-29</div>
-        <div class="post-info">
-            <a href="https://zonejay.github.io/2019/08/29/2019-08-29/">
-                <h3>
-                    豆瓣科幻电影分析
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#HTML5" title="HTML5">HTML5</a>
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#FE" title="FE">FE</a>
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Node.js" title="Node.js">Node.js</a>
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#爬虫" title="爬虫">爬虫</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2023-09-01 00:00:00</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#FE" title="FE">FE</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-08-01</div>
-        <div class="post-info">
-            <a href="https://zonejay.github.io/2019/08/01/2019-08-01/">
-                <h3>
-                    基于electron的番茄计时器
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#HTML5" title="HTML5">HTML5</a>
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#FE" title="FE">FE</a>
-                <span>/</span>
-                
-                
-            </p>
+    <div class="post-content ">
+        <p>在我们日常的工作（CRUD）中，对一部分资源的增删改查都是在一个页面或者说一个组件内完成。而这个页面一般包括搜索、添加、修改、删除、分页查询。其中，搜索一般还涉及到模糊匹配。</p>
+<p>当我们对于新来的需求，一般也是CRUD。勤快的，将这一系列业务封装成组件。虽然组件的使用一般仅限组件开发者本人，在开发者离职或者因为其他的原因不维护之后，其他人也就不会再使用这个组件了。懒一点的，一般都是直接复制相似业务的代码，然后再改一改，等到下次有类似的需求的时候再复制一次。这两种情况都会导致项目中的代码文件越来越多，也越来越难以维护。当到了某个节点，项目负责人或者谁大手一挥，说进行项目重构，你可千万不要高兴的太早，以为不要维护老系统了。大多数情况下，老的项目如果还在跑，就需要有人来维护。这个时候需要维护的数量只会多，不会少。如果项目人员变更得勤快一点，有的时候为了偷懒，直接将旧项目的代码拷贝进新项目。当然，如果有严格的代码审查一般是不会发生这种情况的，但是一般的小公司都疲于业务，代码能跑就行。</p>
+<p>作为CRUD工程师也工作了四年多了，面对一些相似的需求我也想过很多。一开始是从react的某个组件得到了灵感，将CRUD的<br>这四个操作作为对象封装，使用JSON来配置表格。但是这样仅能满足一些基本的查询需求。更进一步的，如果嫌JSON麻烦，<br>可以使用可视化来配置。这也是我接下来要开展的工作。</p>
+
+        
+        <br />
+        <div id="comment-container">
         </div>
+        <div id="disqus_thread"></div>
+        <div id="lv-container"></div>
+        <div class="giscus"></div>
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-06-23</div>
-        <div class="post-info">
-            <a href="https://zonejay.github.io/2019/06/23/2019-06-23/">
-                <h3>
-                    带计时功能的todo程序
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#HTML5" title="HTML5">HTML5</a>
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#FE" title="FE">FE</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
-    </div>
-    
 </div>
-<ul class="pager">
-    
-    <li class="previous">
-        <a href="/page/3/">&larr; Newer Posts</a>
-    </li>
-    
-    
-</ul>
 
     </div>
 </div>
@@ -283,7 +213,7 @@
     // We expose some of the variables needed by the front end
     window.hexo_search_path = "search.json"
     window.hexo_root = "/"
-    window.isPost = false
+    window.isPost = true
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 
