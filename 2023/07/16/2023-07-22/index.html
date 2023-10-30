@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang=zh-CN>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:description" content="ZoneJay的博客">
+    <meta property="og:type" content="website">
+    <meta name="description" content="ZoneJay的博客">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        提取和安全裂变 - ZoneJay的博客
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_28hi1hpxx24.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+    
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Coding, Gaming and Writing </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.png" />
+        </div>
+        <div class="name">
+            <i>ZoneJay</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/collect/">
+                    <i class="iconfont icon-shoucang1"></i>
+                    <span>收藏</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8F%90%E5%8F%96"><span class="toc-text">提取</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E5%AE%B9%E6%9D%A5%E6%BA%90"><span class="toc-text">内容来源</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8E%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E6%B5%81%E7%A8%8B%E4%B8%AD%E6%8F%90%E5%8F%96%E5%86%85%E5%AE%B9"><span class="toc-text">从构建工具流程中提取内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8E%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E4%B8%AD%E6%8F%90%E5%8F%96"><span class="toc-text">从文件系统中提取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8E%E5%86%85%E8%81%94%E6%96%87%E6%9C%AC%E4%B8%AD%E6%8F%90%E5%8F%96"><span class="toc-text">从内联文本中提取</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%80%E9%99%90%E6%80%A7"><span class="toc-text">局限性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E5%88%97%E8%A1%A8"><span class="toc-text">安全列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%BB%91%E5%90%8D%E5%8D%95"><span class="toc-text">黑名单</span></a></li></ol></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-bg" id="search-bg"></div>
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> Coding, Gaming and Writing </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        提取和安全裂变
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2023-07-16 00:00:00</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#FE" title="FE">FE</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#翻译" title="翻译">翻译</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#UnoCSS" title="UnoCSS">UnoCSS</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h1 id="提取"><a href="#提取" class="headerlink" title="提取"></a>提取</h1><p>UnoCSS通过在代码库中搜索工具的使用情况，并根据需求生成相应的CSS。我们将这个过程称为提取（extracting）。</p>
+<h2 id="内容来源"><a href="#内容来源" class="headerlink" title="内容来源"></a>内容来源</h2><p>UnoCSS支持从多个来源提取工具的使用情况：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://unocss.dev/guide/extracting#extracting-from-build-tools-pipeline">Pipeline</a> – 从您的构建工具流程中提取正确的部分</li>
+<li><a target="_blank" rel="noopener" href="https://unocss.dev/guide/extracting#extracting-from-filesystem">Filesystem</a> – 通过读取和监视文件从您的文件系统中提取</li>
+<li><a target="_blank" rel="noopener" href="https://unocss.dev/guide/extracting#extracting-from-inline-text">inline</a> – 从内联的纯文本中提取</li>
+</ul>
+<p>来自不同来源的工具使用情况将被合并在一起，并生成最终的CSS。</p>
+<h3 id="从构建工具流程中提取内容"><a href="#从构建工具流程中提取内容" class="headerlink" title="从构建工具流程中提取内容"></a>从构建工具流程中提取内容</h3><p>这在 Vite 和 Webpack 的集成中得到支持。</p>
+<p>UnoCSS将读取通过构建工具流程的内容，并从中提取工具的使用情况。这是最高效和准确的提取方式，因为我们只智能提取实际在您的应用程序中使用的工具使用情况，并且在提取过程中不进行额外的文件IO操作。</p>
+<p>默认情况下，UnoCSS将从构建流程中的具有扩展名 .jsx、.tsx、.vue、.md、.html、.svelte、.astro 的文件中提取工具的使用情况，并根据需要生成相应的CSS。默认情况下，不包括 .js 和 .ts 文件。</p>
+<p>要进行配置，您可以更新您的 uno.config.ts 文件：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// uno.config.ts</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">  <span class="attr">content</span>: &#123;</span><br><span class="line">    <span class="attr">pipeline</span>: &#123;</span><br><span class="line">      <span class="attr">include</span>: [</span><br><span class="line">        <span class="comment">// the default</span></span><br><span class="line">        <span class="regexp">/\.(vue|svelte|[jt]sx|mdx?|astro|elm|php|phtml|html)($|\?)/</span>,</span><br><span class="line">        <span class="comment">// include js/ts files</span></span><br><span class="line">        <span class="string">&#x27;src/**/*.&#123;js,ts&#125;&#x27;</span>,</span><br><span class="line">      ],</span><br><span class="line">      <span class="comment">// exclude files</span></span><br><span class="line">      <span class="comment">// exclude: []</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>您还可以在文件中的任何位置添加 @unocss-include 魔术注释，以文件为基础，告诉 UnoCSS 扫描该文件。或者，在配置中添加 *.js 或 *.ts，以将所有 js&#x2F;ts 文件包括在扫描目标中。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ./some-utils.js</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// since `.js` files are not included by default,</span></span><br><span class="line"><span class="comment">// the following comment tells UnoCSS to force scan this file.</span></span><br><span class="line"><span class="comment">// @unocss-include</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> classes = &#123;</span><br><span class="line">  <span class="attr">active</span>: <span class="string">&#x27;bg-primary text-white&#x27;</span>,</span><br><span class="line">  <span class="attr">inactive</span>: <span class="string">&#x27;bg-gray-200 text-gray-500&#x27;</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>类似地，您还可以添加 @unocss-ignore 来跳过对文件的扫描和转换。</p>
+<p>如果您希望 UnoCSS 跳过某个代码块而不进行提取，您可以使用成对的 @unocss-skip-start 和 @unocss-skip-end 来实现：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;text-green text-xl&quot;</span>&gt;</span></span><br><span class="line">  Green Large</span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- @unocss-skip-start --&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- `text-red` will not be extracted --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;text-red&quot;</span>&gt;</span></span><br><span class="line">  Red</span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- @unocss-skip-end --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="从文件系统中提取"><a href="#从文件系统中提取" class="headerlink" title="从文件系统中提取"></a>从文件系统中提取</h3><p>在某些情况下，如果您使用的集成没有访问构建工具流程（例如，PostCSS 插件），或者您正在与后端框架进行集成且代码不经过构建流程，您可以手动指定要提取的文件。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// uno.config.ts</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">  <span class="attr">content</span>: &#123;</span><br><span class="line">    <span class="attr">filesystem</span>: [</span><br><span class="line">      <span class="string">&#x27;src/**/*.php&#x27;</span>,</span><br><span class="line">      <span class="string">&#x27;public/*.html&#x27;</span>,</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>匹配的文件将直接从文件系统中读取，并在开发模式下进行更改监视。</p>
+<h3 id="从内联文本中提取"><a href="#从内联文本中提取" class="headerlink" title="从内联文本中提取"></a>从内联文本中提取</h3><p>此外，您还可以从内联文本中提取工具的使用情况，这些文本可能来自其他地方。</p>
+<p>您还可以传递一个异步函数来返回内容。但请注意，该函数只会在构建时调用一次。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// uno.config.ts</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">  <span class="attr">content</span>: &#123;</span><br><span class="line">    <span class="attr">inline</span>: [</span><br><span class="line">      <span class="comment">// plain text</span></span><br><span class="line">      <span class="string">&#x27;&lt;div class=&quot;p-4 text-red&quot;&gt;Some text&lt;/div&gt;&#x27;</span>,</span><br><span class="line">      <span class="comment">// async getter</span></span><br><span class="line">      <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">        <span class="keyword">const</span> response = <span class="keyword">await</span> <span class="title function_">fetch</span>(<span class="string">&#x27;https://example.com&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span> response.<span class="title function_">text</span>()</span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="局限性"><a href="#局限性" class="headerlink" title="局限性"></a>局限性</h2><p>由于 UnoCSS 在构建时运行，这意味着只有静态呈现的工具才会生成并传递到您的应用程序中。在运行时动态使用或从外部资源获取的工具可能不会被应用。</p>
+<h3 id="安全列表"><a href="#安全列表" class="headerlink" title="安全列表"></a>安全列表</h3><p>有时您可能希望使用动态的拼接，例如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;p-$&#123;size&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span> <span class="comment">&lt;!-- this won&#x27;t work! --&gt;</span></span><br></pre></td></tr></table></figure>
+<p>由于 UnoCSS 在构建时使用静态提取，我们无法在编译时知道所有工具的组合情况。因此，您可以配置 safelist 选项来解决这个问题。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// uno.config.ts</span></span><br><span class="line"><span class="attr">safelist</span>: <span class="string">&#x27;p-1 p-2 p-3 p-4&#x27;</span>.<span class="title function_">split</span>(<span class="string">&#x27; &#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>生成对应的 CSS：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.p-1</span> &#123; <span class="attribute">padding</span>: <span class="number">0.25rem</span>; &#125;</span><br><span class="line"><span class="selector-class">.p-2</span> &#123; <span class="attribute">padding</span>: <span class="number">0.5rem</span>; &#125;</span><br><span class="line"><span class="selector-class">.p-3</span> &#123; <span class="attribute">padding</span>: <span class="number">0.75rem</span>; &#125;</span><br><span class="line"><span class="selector-class">.p-4</span> &#123; <span class="attribute">padding</span>: <span class="number">1rem</span>; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>或者更灵活：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// uno.config.ts</span></span><br><span class="line"><span class="attr">safelist</span>: [</span><br><span class="line">  ...<span class="title class_">Array</span>.<span class="title function_">from</span>(&#123; <span class="attr">length</span>: <span class="number">4</span> &#125;, <span class="function">(<span class="params">_, i</span>) =&gt;</span> <span class="string">`p-<span class="subst">$&#123;i + <span class="number">1</span>&#125;</span>`</span>),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>如果您希望在运行时进行真正的动态生成，您可以查看 @unocss&#x2F;runtime 包</p>
+<h3 id="黑名单"><a href="#黑名单" class="headerlink" title="黑名单"></a>黑名单</h3><p>类似于 safelist，您还可以配置 blocklist 来排除某些工具的生成。不同于 safelist，blocklist 接受字符串进行精确匹配和正则表达式进行模式匹配。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// uno.config.ts</span></span><br><span class="line"><span class="attr">blocklist</span>: [</span><br><span class="line">  <span class="string">&#x27;p-1&#x27;</span>,</span><br><span class="line">  <span class="regexp">/^p-[2-4]$/</span>,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<p>这将排除 p-1、p-2、p-3 和 p-4 的生成。这对于排除一些误报非常有用。</p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+        <div id="lv-container"></div>
+        <div class="giscus"></div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>  Theme <a target="_blank" rel="noopener" href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+</html>
