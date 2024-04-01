@@ -12,7 +12,7 @@
 
     <title>
         
-        GH60键盘 - ZoneJay的博客
+        在zsh更改快捷键 - ZoneJay的博客
         
     </title>
 
@@ -111,7 +111,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#HHKB%E5%B8%83%E5%B1%80"><span class="toc-text">HHKB布局</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E8%B5%84%E6%BA%90"><span class="toc-text">相关资源</span></a></li></ol>
+    
 </div>
     
 </div>
@@ -143,15 +143,15 @@
 
 <div class="post-container">
     <div class="post-title">
-        GH60键盘
+        在zsh更改快捷键
     </div>
 
     <div class="post-meta">
-        <span class="attr">发布于：<span>2022-10-06 14:29:41</span></span>
+        <span class="attr">发布于：<span>2024-04-01 14:29:41</span></span>
         
         <span class="attr">标签：/
         
-        <a class="tag" href="/tags/#硬件" title="硬件">硬件</a>
+        <a class="tag" href="/tags/#zsh" title="zsh">zsh</a>
         <span>/</span>
         
         
@@ -161,10 +161,17 @@
 </span>
     </div>
     <div class="post-content ">
-        <p>GH60是一个开源的键盘方案，有许多的外壳和pcb可以选择。又因为pcb适配了多种配列，这样又可以基于GH60衍生处很多不同配列方案，比如HHKB</p>
-<h2 id="HHKB布局"><a href="#HHKB布局" class="headerlink" title="HHKB布局"></a>HHKB布局</h2><p>需要购买额外的增补键帽</p>
-<p>7X 空格键盘 1个<br>1.5X 按键R1高度 2个<br>1.75X 按键一个R1高度 1个<br>1X 按键R1高度 3个<br>1X 按键R4高度 2个  </p>
-<h2 id="相关资源"><a href="#相关资源" class="headerlink" title="相关资源"></a>相关资源</h2><p><a target="_blank" rel="noopener" href="https://gitee.com/tangp1n/the-key-board-01">适配gh60pcb的外壳</a><br><a target="_blank" rel="noopener" href="https://github.com/help-14/mechanical-keyboard">机械键盘方案</a></p>
+        <p>Zsh 是一种功能强大的 shell，提供了许多功能和定制选项，其中包括更改快捷键。快捷键可以让用户更高效地操作命令行界面，并根据个人偏好进行定制。</p>
+<p>要更改 Zsh 中的快捷键，可以使用 bindkey 命令。该命令允许用户将键位绑定到特定的操作或函数上。</p>
+<p>例如，要将 Ctrl + u 绑定到向上删除整行的操作，可以执行以下命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bindkey</span> <span class="string">&#x27;^u&#x27;</span> backward-kill-line</span><br></pre></td></tr></table></figure>
+<p>这将使得在输入命令时，按下 Ctrl + u 将会删除当前光标位置到行首的所有字符。</p>
+<p>此外，用户还可以通过编辑 .zshrc 文件来永久更改键位绑定。在文件中添加类似下面的行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bindkey</span> <span class="string">&#x27;^u&#x27;</span> backward-kill-line</span><br></pre></td></tr></table></figure>
+<p>这样，每次启动 Zsh 时，Ctrl + u 都会绑定到相应的操作上。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">bindkey</span> <span class="string">&#x27;^[l&#x27;</span> down-case-word</span><br></pre></td></tr></table></figure>
+<p>这将使得在输入命令时，按下 Alt + l 将会向前移动一个单词。</p>
+<p>通过更改 Zsh 中的快捷键，用户可以根据自己的喜好和习惯来提高在命令行界面中的操作效率，使得命令行使用更加流畅。</p>
 
         
         <br />
