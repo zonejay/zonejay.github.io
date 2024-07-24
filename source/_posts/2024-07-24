@@ -1,0 +1,8 @@
+---
+title: Arch Linux安装
+date: 2024-07-24
+tags: [Linux]
+---
+
+安装了sway、alacritty、sddm，没有配置sway，导致登录后alacritty不能被打开，没有任何方法进
+终端，只能重新安装
