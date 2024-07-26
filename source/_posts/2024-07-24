@@ -6,3 +6,5 @@ tags: [Linux]
 
 安装了sway、alacritty、sddm，没有配置sway，导致登录后alacritty不能被打开，没有任何方法进
 终端，只能重新安装
+
+gtk2 gtkmm gtkmm3 xf86-video-vmware 剪贴板 vmware中屏幕比例调账
