@@ -111,7 +111,7 @@
     </div>
     
         <div id="toc" class="toc-article">
-    
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Arch-Linux%E9%85%8D%E7%BD%AEi3wm"><span class="toc-text">Arch Linux配置i3wm</span></a></li></ol>
 </div>
     
 </div>
@@ -163,6 +163,13 @@
     <div class="post-content ">
         <p>安装了sway、alacritty、sddm，没有配置sway，导致登录后alacritty不能被打开，没有任何方法进<br>终端，只能重新安装</p>
 <p>gtk2 gtkmm gtkmm3 xf86-video-vmware 剪贴板 vmware中屏幕比例调账</p>
+<h3 id="Arch-Linux配置i3wm"><a href="#Arch-Linux配置i3wm" class="headerlink" title="Arch Linux配置i3wm"></a>Arch Linux配置i3wm</h3><ol>
+<li>安装xorg<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -S xorg xorg-server xorg-xinit</span><br></pre></td></tr></table></figure></li>
+<li>安装i3</li>
+<li>拷贝xorg默认配置<code>cp /etc/X11/xinit/xinitrc ~/.xinitrc</code></li>
+<li>在xorg配置中添加i3启动项<code>exec i3</code></li>
+<li>安装桌面管理sddm，默认启动<code>systemctl enable sddm</code></li>
+</ol>
 
         
         <br />
