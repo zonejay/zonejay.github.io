@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang=zh-CN>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:description" content="ZoneJay的博客">
+    <meta property="og:type" content="website">
+    <meta name="description" content="ZoneJay的博客">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        CRUD配置工具 起因 - ZoneJay的博客
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_28hi1hpxx24.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+    
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Coding, Gaming and Writing </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.png" />
+        </div>
+        <div class="name">
+            <i>ZoneJay</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/collect/">
+                    <i class="iconfont icon-shoucang1"></i>
+                    <span>收藏</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E5%87%AD%E8%AF%81%E5%8A%A0%E5%AF%86"><span class="toc-text">用户凭证加密</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-bg" id="search-bg"></div>
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> Coding, Gaming and Writing </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        CRUD配置工具 起因
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2023-09-01 00:00:00</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#Node.js" title="Node.js">Node.js</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <p>好的，以下是在“用户凭证加密”博客文章中添加 Node.js 处理加密凭证方式的增强版本：</p>
+<h2 id="用户凭证加密"><a href="#用户凭证加密" class="headerlink" title="用户凭证加密"></a>用户凭证加密</h2><p>在当今数字化时代，用户凭证的安全保护变得至关重要。用户凭证通常包含敏感信息，如用户名、密码、电子邮件地址等，一旦泄露，可能导致严重的安全问题。因此，对用户凭证进行加密保护变得尤为重要。</p>
+<p>本文将介绍用户凭证加密的基本概念、方法和工具，并重点探讨在 Node.js 环境下如何安全有效地处理加密凭证。</p>
+<p><strong>什么是用户凭证加密？</strong></p>
+<p>用户凭证加密是指使用加密算法对用户凭证进行加密，使其无法被未授权者读取或篡改。加密后的凭证通常以密文形式存储，只有拥有正确解密密钥的人才能解密并访问其中的信息。</p>
+<p><strong>用户凭证加密的方法</strong></p>
+<p>用户凭证加密可以使用多种方法，包括对称加密、非对称加密和哈希加密。</p>
+<ul>
+<li><strong>对称加密</strong>：对称加密使用相同的密钥进行加密和解密。常见的对称加密算法包括 AES、DES 和 3DES。AES (高级加密标准) 是目前最常用的对称加密算法，安全性高，效率好。</li>
+<li><strong>非对称加密</strong>：非对称加密使用一对密钥进行加密和解密。公钥用于加密，私钥用于解密。常见的非对称加密算法包括 RSA 和 ECC。非对称加密算法安全性高，适用于密钥交换、数字签名等场景。</li>
+<li><strong>哈希加密</strong>：哈希加密是一种单向加密算法，无法从密文还原出明文。常见的哈希加密算法包括 MD5（不推荐使用，因为存在安全漏洞）、SHA-1（也不推荐使用） 和 SHA-256、SHA-512 (推荐使用)。哈希加密算法常用于存储密码，验证数据的完整性和真实性。</li>
+</ul>
+<p><strong>Node.js 中处理加密凭证</strong></p>
+<p>Node.js 提供了 <code>crypto</code> 模块，用于进行各种加密操作。以下是一些在 Node.js 中处理加密凭证的常用方法和最佳实践：</p>
+<p><strong>1. 使用安全的对称加密算法 (AES-256-GCM)：</strong></p>
+<p>相比 CBC 模式，GCM（伽罗瓦&#x2F;计数器模式）提供了认证加密，可以同时保证数据的机密性和完整性。以下是一个使用 <code>aes-256-gcm</code> 的示例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> crypto <span class="keyword">from</span> <span class="string">&#x27;crypto&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">ENCRYPTION_KEY</span> = process.<span class="property">env</span>.<span class="property">ENCRYPTION_KEY</span>; <span class="comment">// 强烈建议从环境变量或密钥管理服务中获取密钥</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">encryptGCM</span>(<span class="params">data, aad</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="variable constant_">ENCRYPTION_KEY</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&#x27;ENCRYPTION_KEY is not set&#x27;</span>);</span><br><span class="line">    <span class="keyword">const</span> key = <span class="title class_">Buffer</span>.<span class="title function_">from</span>(<span class="variable constant_">ENCRYPTION_KEY</span>, <span class="string">&#x27;hex&#x27;</span>); <span class="comment">// 密钥需要转换为 Buffer</span></span><br><span class="line">    <span class="keyword">const</span> iv = crypto.<span class="title function_">randomBytes</span>(<span class="number">12</span>); <span class="comment">// GCM 推荐 12 字节 IV</span></span><br><span class="line">    <span class="keyword">const</span> cipher = crypto.<span class="title function_">createCipheriv</span>(<span class="string">&#x27;aes-256-gcm&#x27;</span>, key, iv);</span><br><span class="line">    <span class="keyword">if</span> (aad) &#123;</span><br><span class="line">        cipher.<span class="title function_">setAAD</span>(<span class="title class_">Buffer</span>.<span class="title function_">from</span>(aad));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> encrypted = <span class="title class_">Buffer</span>.<span class="title function_">concat</span>([cipher.<span class="title function_">update</span>(data), cipher.<span class="title function_">final</span>()]);</span><br><span class="line">    <span class="keyword">const</span> authTag = cipher.<span class="title function_">getAuthTag</span>();</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="attr">iv</span>: iv.<span class="title function_">toString</span>(<span class="string">&#x27;hex&#x27;</span>),</span><br><span class="line">        <span class="attr">encryptedData</span>: encrypted.<span class="title function_">toString</span>(<span class="string">&#x27;hex&#x27;</span>),</span><br><span class="line">        <span class="attr">authTag</span>: authTag.<span class="title function_">toString</span>(<span class="string">&#x27;hex&#x27;</span>)</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">decryptGCM</span>(<span class="params">encryptedData, aad</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="variable constant_">ENCRYPTION_KEY</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&#x27;ENCRYPTION_KEY is not set&#x27;</span>);</span><br><span class="line">    <span class="keyword">const</span> key = <span class="title class_">Buffer</span>.<span class="title function_">from</span>(<span class="variable constant_">ENCRYPTION_KEY</span>, <span class="string">&#x27;hex&#x27;</span>);</span><br><span class="line">    <span class="keyword">const</span> iv = <span class="title class_">Buffer</span>.<span class="title function_">from</span>(encryptedData.<span class="property">iv</span>, <span class="string">&#x27;hex&#x27;</span>);</span><br><span class="line">    <span class="keyword">const</span> authTag = <span class="title class_">Buffer</span>.<span class="title function_">from</span>(encryptedData.<span class="property">authTag</span>, <span class="string">&#x27;hex&#x27;</span>);</span><br><span class="line">    <span class="keyword">const</span> encrypted = <span class="title class_">Buffer</span>.<span class="title function_">from</span>(encryptedData.<span class="property">encryptedData</span>, <span class="string">&#x27;hex&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> decipher = crypto.<span class="title function_">createDecipheriv</span>(<span class="string">&#x27;aes-256-gcm&#x27;</span>, key, iv);</span><br><span class="line">    <span class="keyword">if</span> (aad) &#123;</span><br><span class="line">      decipher.<span class="title function_">setAAD</span>(<span class="title class_">Buffer</span>.<span class="title function_">from</span>(aad));</span><br><span class="line">    &#125;</span><br><span class="line">    decipher.<span class="title function_">setAuthTag</span>(authTag);</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">const</span> decrypted = <span class="title class_">Buffer</span>.<span class="title function_">concat</span>([decipher.<span class="title function_">update</span>(encrypted), decipher.<span class="title function_">final</span>()]);</span><br><span class="line">        <span class="keyword">return</span> decrypted.<span class="title function_">toString</span>();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">        <span class="comment">// 认证失败，数据可能被篡改</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用示例</span></span><br><span class="line"><span class="keyword">const</span> message = <span class="string">&#x27;This is a secret message.&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> associatedData = <span class="string">&#x27;additional data&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> encrypted = <span class="title function_">encryptGCM</span>(message, associatedData);</span><br><span class="line"><span class="keyword">const</span> decrypted = <span class="title function_">decryptGCM</span>(encrypted, associatedData);</span><br></pre></td></tr></table></figure>
+
+<p><strong>2. 安全地存储密码 (使用 bcrypt 或 Argon2):</strong></p>
+<p>永远不要以明文形式存储密码。使用 bcrypt 或 Argon2 这样的密钥导出函数（KDF）进行哈希加盐处理。这些算法计算强度高，可以有效抵抗彩虹表攻击。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> bcrypt <span class="keyword">from</span> <span class="string">&#x27;bcrypt&#x27;</span>; <span class="comment">// 或使用 argon2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">hashPassword</span>(<span class="params">password</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> saltRounds = <span class="number">10</span>; <span class="comment">// 成本因子，越高越安全，但速度越慢</span></span><br><span class="line">  <span class="keyword">const</span> hashedPassword = <span class="keyword">await</span> bcrypt.<span class="title function_">hash</span>(password, saltRounds);</span><br><span class="line">  <span class="keyword">return</span> hashedPassword;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">comparePassword</span>(<span class="params">password, hashedPassword</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> match = <span class="keyword">await</span> bcrypt.<span class="title function_">compare</span>(password, hashedPassword);</span><br><span class="line">  <span class="keyword">return</span> match;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用示例</span></span><br><span class="line"><span class="keyword">const</span> password = <span class="string">&#x27;mysecretpassword&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> hashedPassword = <span class="keyword">await</span> <span class="title function_">hashPassword</span>(password);</span><br><span class="line"><span class="keyword">const</span> isMatch = <span class="keyword">await</span> <span class="title function_">comparePassword</span>(password, hashedPassword);</span><br></pre></td></tr></table></figure>
+
+<p><strong>3. 密钥管理：</strong></p>
+<ul>
+<li><strong>环境变量：</strong> 对于简单的应用，可以使用环境变量存储密钥，但要确保服务器环境的安全。</li>
+<li><strong>密钥管理服务 (KMS):</strong> 对于生产环境，强烈建议使用专业的密钥管理服务，如 AWS KMS、Google Cloud KMS 或 HashiCorp Vault。这些服务提供了安全的密钥存储、轮换和访问控制。</li>
+<li><strong>绝不硬编码密钥：</strong> 不要将密钥直接写在代码中。</li>
+</ul>
+<p><strong>4. 使用 HTTPS：</strong></p>
+<p>使用 HTTPS 协议进行所有通信，以确保数据在传输过程中的安全。</p>
+<p><strong>用户凭证加密的工具</strong></p>
+<p>除了 Node.js 的 <code>crypto</code> 模块和 bcrypt&#x2F;Argon2 库之外，还有其他一些有用的工具和库：</p>
+<ul>
+<li><strong>dotenv:</strong> 用于从 <code>.env</code> 文件加载环境变量。</li>
+<li><strong>config:</strong> 用于管理应用程序的配置，包括敏感信息。</li>
+</ul>
+<p><strong>用户凭证加密的作用</strong></p>
+<p>用户凭证加密可以保护用户隐私和安全，防止用户凭证被盗窃、泄露或篡改。用户凭证加密还可以防止用户凭证被恶意使用。</p>
+<p><strong>用户凭证加密的注意事项</strong></p>
+<ul>
+<li><strong>选择安全的加密算法</strong>：优先选择经过广泛审查和推荐的算法，如 AES-256-GCM、bcrypt 或 Argon2。</li>
+<li><strong>使用强密码</strong>：强制用户使用强密码，并实施密码策略。</li>
+<li><strong>定期备份加密数据和密钥</strong>：但要确保备份的安全性。</li>
+<li><strong>定期审查和更新加密方案</strong>：关注最新的安全漏洞和最佳实践，并及时更新加密方案。</li>
+</ul>
+<p><strong>总结</strong></p>
+<p>用户凭证加密是保护用户数据安全的重要基石。在 Node.js 环境中，通过结合 <code>crypto</code> 模块、bcrypt&#x2F;Argon2 和安全的密钥管理实践，可以构建强大的用户凭证保护机制。希望本文能够帮助开发者更好地理解和应用用户凭证加密技术。</p>
+<p>这个版本添加了更多关于 Node.js 加密最佳实践的细节，包括使用 <code>aes-256-gcm</code>、bcrypt&#x2F;Argon2 进行密码哈希、密钥管理以及其他有用的工具。它也更强调了安全的重要性，并提供了更全面的建议。</p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+        <div id="lv-container"></div>
+        <div class="giscus"></div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>  Theme <a target="_blank" rel="noopener" href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+</html>
