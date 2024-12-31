@@ -12,7 +12,7 @@
 
     <title>
         
-        ZoneJay的博客
+        You don&#39;t know JS - ZoneJay的博客
         
     </title>
 
@@ -69,7 +69,7 @@
     </div>
     <div class="contents" id="nav-content">
         <ul>
-            <li  class=active >
+            <li >
                 <a href="/">
                     <i class="iconfont icon-shouye1"></i>
                     <span>主页</span>
@@ -110,6 +110,10 @@
         </ul>
     </div>
     
+        <div id="toc" class="toc-article">
+    
+</div>
+    
 </div>
 
 
@@ -135,92 +139,52 @@
     <div class="index-middle">
         <!-- Main Content -->
         
-<div class="post-preview-container" style="min-height: 720px">
-    
-    <div class="post-preview">
-        <div class="post-time">2019-08-29</div>
-        <div class="post-info">
-            <a href="https://zonejay.github.io/2019/08/29/2019-08-29/">
-                <h3>
-                    豆瓣科幻电影分析
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#HTML5" title="HTML5">HTML5</a>
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#FE" title="FE">FE</a>
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#Node.js" title="Node.js">Node.js</a>
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#爬虫" title="爬虫">爬虫</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+
+<div class="post-container">
+    <div class="post-title">
+        You don't know JS
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-08-01</div>
-        <div class="post-info">
-            <a href="https://zonejay.github.io/2019/08/01/2019-08-01/">
-                <h3>
-                    基于electron的番茄计时器
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#HTML5" title="HTML5">HTML5</a>
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#FE" title="FE">FE</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2024-12-01 00:00:00</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#JavaScript" title="JavaScript">JavaScript</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-06-23</div>
-        <div class="post-info">
-            <a href="https://zonejay.github.io/2019/06/23/2019-06-23/">
-                <h3>
-                    带计时功能的todo程序
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#HTML5" title="HTML5">HTML5</a>
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#FE" title="FE">FE</a>
-                <span>/</span>
-                
-                
-            </p>
+    <div class="post-content ">
+        <p>LHS与RHS</p>
+<p>作用域分为:</p>
+<ol>
+<li>词法作用域<blockquote>
+<p>关注函数在何处声明</p>
+</blockquote>
+</li>
+<li>动态作用域<blockquote>
+<p>关注函数在何处调用</p>
+</blockquote>
+</li>
+</ol>
+<p>某种意义上来说，this和动态作用域有相似之处。this的绑定和函数声明的位置没有关系，只取决于函数的调用方式</p>
+<p>当函数可以记住并访问所在的词法作用域时，就产生了闭包。函数在定义时的词法作用域以外的地方<br>被调用，闭包使得函数可以继续访问定义时的词法作用域</p>
+
+        
+        <br />
+        <div id="comment-container">
         </div>
+        <div id="disqus_thread"></div>
+        <div id="lv-container"></div>
+        <div class="giscus"></div>
     </div>
-    
 </div>
-<ul class="pager">
-    
-    <li class="previous">
-        <a href="/page/5/">&larr; Newer Posts</a>
-    </li>
-    
-    
-</ul>
 
     </div>
 </div>
@@ -260,7 +224,7 @@
     // We expose some of the variables needed by the front end
     window.hexo_search_path = "search.json"
     window.hexo_root = "/"
-    window.isPost = false
+    window.isPost = true
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 
