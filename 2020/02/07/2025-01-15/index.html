@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang=zh-CN>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:description" content="ZoneJay的博客">
+    <meta property="og:type" content="website">
+    <meta name="description" content="ZoneJay的博客">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        模板方法：使用抽象类而不是接口 - ZoneJay的博客
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_28hi1hpxx24.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+    
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Coding, Gaming and Writing </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.png" />
+        </div>
+        <div class="name">
+            <i>ZoneJay</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/collect/">
+                    <i class="iconfont icon-shoucang1"></i>
+                    <span>收藏</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%EF%BC%9A%E4%B8%BA%E4%BD%95%E4%BD%BF%E7%94%A8%E6%8A%BD%E8%B1%A1%E7%B1%BB%E8%80%8C%E9%9D%9E%E6%8E%A5%E5%8F%A3"><span class="toc-text">模板方法模式：为何使用抽象类而非接口</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8%E6%8A%BD%E8%B1%A1%E7%B1%BB%E8%80%8C%E4%B8%8D%E6%98%AF%E6%8E%A5%E5%8F%A3%EF%BC%9F"><span class="toc-text">为什么使用抽象类而不是接口？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%9A"><span class="toc-text">示例：</span></a></li></ol></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-bg" id="search-bg"></div>
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> Coding, Gaming and Writing </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        模板方法：使用抽象类而不是接口
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2020-02-07 18:05:50</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#设计模式" title="设计模式">设计模式</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h1 id="模板方法模式：为何使用抽象类而非接口"><a href="#模板方法模式：为何使用抽象类而非接口" class="headerlink" title="模板方法模式：为何使用抽象类而非接口"></a>模板方法模式：为何使用抽象类而非接口</h1><p>在<strong>模板方法设计模式</strong>（Template Method Pattern）中，抽象类扮演着关键角色。该模式定义了一个算法的骨架，将某些步骤的实现延迟到子类中。通过这种方式，子类可以在不改变算法结构的情况下重新定义算法的某些步骤。</p>
+<h2 id="为什么使用抽象类而不是接口？"><a href="#为什么使用抽象类而不是接口？" class="headerlink" title="为什么使用抽象类而不是接口？"></a>为什么使用抽象类而不是接口？</h2><ol>
+<li><p><strong>部分实现的能力：</strong> 抽象类允许包含具体方法的实现，这使得它可以提供算法的通用部分实现。在模板方法模式中，抽象类定义了算法的骨架，并实现了那些在所有子类中都相同的部分。接口则只能声明方法，不能提供任何实现，因此无法直接用于需要部分实现的场景。</p>
+</li>
+<li><p><strong>维护算法结构的完整性：</strong> 通过在抽象类中实现模板方法，并将其声明为<code>final</code>，可以防止子类修改算法的整体结构，确保算法的骨架保持不变。接口无法提供这种机制，因为它们不能包含方法实现。</p>
+</li>
+<li><p><strong>共享代码：</strong> 抽象类允许在其中定义成员变量和具体方法，子类可以直接继承这些成员和方法，实现代码重用。接口中只能定义常量和抽象方法，无法提供共享的实现。</p>
+</li>
+</ol>
+<h2 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h2><p>以下是一个使用模板方法模式的示例，展示如何通过抽象类来实现算法的骨架，并将可变部分延迟到子类中实现。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 抽象类，定义算法骨架</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">DataProcessor</span> &#123;</span><br><span class="line">    <span class="comment">// 模板方法，定义算法的步骤</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title function_">process</span><span class="params">()</span> &#123;</span><br><span class="line">        readData();</span><br><span class="line">        processData();</span><br><span class="line">        writeData();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 读取数据 - 所有子类共享的实现</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">readData</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Reading data from source&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 处理数据 - 由子类实现</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">processData</span><span class="params">()</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 写入数据 - 所有子类共享的实现</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">writeData</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Writing data to destination&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 子类，实现特定的数据处理逻辑</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TextDataProcessor</span> <span class="keyword">extends</span> <span class="title class_">DataProcessor</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">processData</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Processing text data&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ImageDataProcessor</span> <span class="keyword">extends</span> <span class="title class_">DataProcessor</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">processData</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Processing image data&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用示例</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">DataProcessor</span> <span class="variable">textProcessor</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TextDataProcessor</span>();</span><br><span class="line">        textProcessor.process();</span><br><span class="line">        <span class="comment">// 输出：</span></span><br><span class="line">        <span class="comment">// Reading data from source</span></span><br><span class="line">        <span class="comment">// Processing text data</span></span><br><span class="line">        <span class="comment">// Writing data to destination</span></span><br><span class="line"></span><br><span class="line">        <span class="type">DataProcessor</span> <span class="variable">imageProcessor</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ImageDataProcessor</span>();</span><br><span class="line">        imageProcessor.process();</span><br><span class="line">        <span class="comment">// 输出：</span></span><br><span class="line">        <span class="comment">// Reading data from source</span></span><br><span class="line">        <span class="comment">// Processing image data</span></span><br><span class="line">        <span class="comment">// Writing data to destination</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个示例中：</p>
+<ul>
+<li><p><strong>抽象类 <code>DataProcessor</code></strong> 定义了算法的骨架，包括读取数据、处理数据和写入数据的步骤。</p>
+</li>
+<li><p><strong>模板方法 <code>process()</code></strong> 定义了算法的执行顺序，并将其声明为<code>final</code>，防止子类修改。</p>
+</li>
+<li><p><strong>具体方法 <code>readData()</code> 和 <code>writeData()</code></strong> 提供了所有子类共享的实现。</p>
+</li>
+<li><p><strong>抽象方法 <code>processData()</code></strong> 由子类实现，以提供特定的数据处理逻辑。</p>
+</li>
+</ul>
+<p>通过使用抽象类，模板方法模式能够提供部分实现、维护算法结构的完整性，并实现代码共享。这些特性是接口所无法提供的，因此在实现模板方法模式时，抽象类是更适合的选择。 </p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+        <div id="lv-container"></div>
+        <div class="giscus"></div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>  Theme <a target="_blank" rel="noopener" href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+</html>
