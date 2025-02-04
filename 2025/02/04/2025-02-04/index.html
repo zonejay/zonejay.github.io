@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang=zh-CN>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:description" content="ZoneJay的博客">
+    <meta property="og:type" content="website">
+    <meta name="description" content="ZoneJay的博客">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        逆向分析某聊天App AI接口提示词的技术探索手记 - ZoneJay的博客
+        
+    </title>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="/css/aircloud.css">
+
+    
+<link rel="stylesheet" href="/css/gitment.css">
+
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_28hi1hpxx24.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+
+    
+
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> Coding, Gaming and Writing </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.png" />
+        </div>
+        <div class="name">
+            <i>ZoneJay</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archives">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/collect/">
+                    <i class="iconfont icon-shoucang1"></i>
+                    <span>收藏</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E5%8A%A8%E6%9C%BA"><span class="toc-text">背景动机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E5%B0%9D%E8%AF%95%E8%B7%AF%E5%BE%84"><span class="toc-text">技术尝试路径</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85%E5%88%86%E6%9E%90"><span class="toc-text">一、网络抓包分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Windows-Fiddler-Android-%E7%BB%84%E5%90%88"><span class="toc-text">1. Windows + Fiddler + Android 组合</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-macOS-Wireshark-iOS-%E7%BB%84%E5%90%88"><span class="toc-text">2. macOS + Wireshark + iOS 组合</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B%E7%AA%81%E7%A0%B4"><span class="toc-text">二、逆向工程突破</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-APK%E5%8F%8D%E7%BC%96%E8%AF%91"><span class="toc-text">1. APK反编译</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%A1%86%E6%9E%B6%E8%A7%A3%E6%9E%90"><span class="toc-text">2. 框架解析</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%AF%B9%E8%AF%9D%E6%B3%A8%E5%85%A5%E5%B0%9D%E8%AF%95"><span class="toc-text">三、对话注入尝试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93"><span class="toc-text">经验总结</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-bg" id="search-bg"></div>
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> Coding, Gaming and Writing </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        逆向分析某聊天App AI接口提示词的技术探索手记
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2025-02-04 00:00:00</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#逆向" title="逆向">逆向</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h2 id="背景动机"><a href="#背景动机" class="headerlink" title="背景动机"></a>背景动机</h2><p>某社交应用的AI助手近期更新后，我一直对其对话逻辑的提示词机制充满好奇。趁着版本更新的机会，决定通过逆向工程探究其底层实现逻辑，特别是系统提示词（prompt）的生成机制。</p>
+<hr>
+<h2 id="技术尝试路径"><a href="#技术尝试路径" class="headerlink" title="技术尝试路径"></a>技术尝试路径</h2><h3 id="一、网络抓包分析"><a href="#一、网络抓包分析" class="headerlink" title="一、网络抓包分析"></a>一、网络抓包分析</h3><h4 id="1-Windows-Fiddler-Android-组合"><a href="#1-Windows-Fiddler-Android-组合" class="headerlink" title="1. Windows + Fiddler + Android 组合"></a>1. Windows + Fiddler + Android 组合</h4><ul>
+<li><p><strong>环境搭建</strong><br>通过Fiddler设置8888端口进行局域网监听，将安卓设备代理指向本机IP，成功完成HTTPS证书安装（需在系统设置-加密与凭证中手动安装CA证书）</p>
+</li>
+<li><p><strong>发现异常</strong><br>浏览器可正常抓包，但目标App始终提示网络连接异常，初步推测存在SSL Pinning等证书锁定机制</p>
+</li>
+</ul>
+<h4 id="2-macOS-Wireshark-iOS-组合"><a href="#2-macOS-Wireshark-iOS-组合" class="headerlink" title="2. macOS + Wireshark + iOS 组合"></a>2. macOS + Wireshark + iOS 组合</h4><ul>
+<li><p><strong>方案转换</strong><br>为简化操作改用Mac设备运行iOS版App，尝试通过Wireshark进行流量监控</p>
+</li>
+<li><p><strong>技术瓶颈</strong><br>HTTPS流量解密未果，常规SSLKEYLOGFILE配置方案未能生效，抓包结果均为加密数据</p>
+</li>
+</ul>
+<h3 id="二、逆向工程突破"><a href="#二、逆向工程突破" class="headerlink" title="二、逆向工程突破"></a>二、逆向工程突破</h3><h4 id="1-APK反编译"><a href="#1-APK反编译" class="headerlink" title="1. APK反编译"></a>1. APK反编译</h4><ul>
+<li><p><strong>工具选择</strong><br>使用<a target="_blank" rel="noopener" href="https://github.com/skylot/jadx">jadx</a>反编译工具进行逆向分析</p>
+</li>
+<li><p><strong>关键发现</strong>  </p>
+<ul>
+<li>对话开场白基于用户标签动态生成</li>
+<li>上下文应答机制深度依赖聊天记录</li>
+<li>核心提示词未固化在客户端代码中</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-框架解析"><a href="#2-框架解析" class="headerlink" title="2. 框架解析"></a>2. 框架解析</h4><ul>
+<li><strong>混合架构</strong><br>发现ReactNative组件痕迹，通过修改.bundle文件后缀为.js可查看前端逻辑代码</li>
+</ul>
+<h3 id="三、对话注入尝试"><a href="#三、对话注入尝试" class="headerlink" title="三、对话注入尝试"></a>三、对话注入尝试</h3><ul>
+<li><p><strong>直接注入</strong><br>在对话框输入特殊指令尝试破解提示词模板</p>
+</li>
+<li><p><strong>防御机制</strong><br>后端存在严格的输入校验系统，在生成最终回复前会对异常内容进行过滤</p>
+</li>
+</ul>
+<hr>
+<h2 id="经验总结"><a href="#经验总结" class="headerlink" title="经验总结"></a>经验总结</h2><p>本次逆向工程虽未能完全破解提示词模板，但梳理出若干关键技术特征：</p>
+<ol>
+<li>系统采用<strong>服务端动态生成</strong>模式，避免提示词本地暴露</li>
+<li>客户端部署<strong>双重防御机制</strong>（SSL Pinning+输入过滤）</li>
+<li>技术架构呈现<strong>混合开发</strong>特征（Native+ReactNative）</li>
+</ol>
+<p>未来可考虑通过Hook框架绕过SSL证书锁定，或针对ReactNative bundle文件进行深度逆向分析，或许能发现新的突破口。</p>
+
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+        <div id="lv-container"></div>
+        <div class="giscus"></div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>  Theme <a target="_blank" rel="noopener" href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+</html>
